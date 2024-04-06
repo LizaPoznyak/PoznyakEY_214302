@@ -1,0 +1,18 @@
+<div th:fragment="header">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+
+        <h5 class="my-0 mr-md-auto font-weight-normal" style="padding-left: 10px;"><a href="/" style="text-decoration: none; color: inherit;">INCORPR</a></h5>
+
+        <nav role="navigation" class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" style="margin-top: 10px;" href="/">Главная</a>
+            <!--/*@thymesVar id="role" type="com"*/-->
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:if="${role != 'NOT'}" style="margin-top: 10px;" href="/events/all">IT-мероприятия</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:if="${role == 'ADMIN' && role != 'NOT'}" style="margin-top: 10px;" href="/events/add">Добавить IT-мероприятие</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:if="${role == 'ADMIN' && role != 'NOT'}" style="margin-top: 10px;" href="/staff/all">Сотрудники</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" th:if="${role == 'NOT'}" style="margin-top: 10px;" href="/sign-in">Войти</a>
+            <form th:if="${role != 'NOT'}" class="btn" action="/logout" method="post">
+                <button class="btn btn-warning" style="margin-top: 5px;">Выйти</button>
+            </form>
+        </nav>
+    </div>
+</div>
