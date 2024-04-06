@@ -30,9 +30,6 @@ public class SignUpController extends Main {
 
     @PostMapping("/sign-up")
     public String sighUpPost(@RequestParam String username, @RequestParam String password, Model model) {
-        //User user = new User(login, password, Role.ADMIN); // только пользователи, добавить админа
-        //---user.setHashPassword(passwordEncoder.encode(user.getPassword()));
-       // usersRepository.save(user);
         if (usersRepository.findAll().size() == 0 || usersRepository.findAll().isEmpty()) {
             usersRepository.save(new User(username, password, Role.ADMIN));
             return "redirect:/sign-in";
