@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>IT-мероприятия</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+</head>
+<body>
+<header th:insert="blocks/header.html :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Редактировать IT-мероприятие</h1>
+    <div th:each="el : ${event}">
+        <form method="post">
+            <input type="text" th:value="${el.title}" name="title" placeholder="Название IT-мероприятия" class="form-control"><br>
+            <textarea name="description" placeholder="Описание IT-мероприятия" class="form-control" th:text="${el.description}"/><br>
+            <input th:value="${el.type}" type="text" name="type" placeholder="Тип IT-мероприятия" class="form-control"><br>
+            <input th:value="${el.day}" type="number" name="day" step="1" minlength="1" maxlength="31" placeholder="День" class="form-control"><br>
+            <input th:value="${el.month}" type="number" name="month" step="1" minlength="1" maxlength="12" placeholder="Месяц" class="form-control"><br>
+            <input th:value="${el.year}" type="number" name="year" step="1" minlength="2000" maxlength="2050" placeholder="Год" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    </div>
+</div>
+<div th:insert="blocks/footer.html :: footer"></div>
+</body>
+</html>
