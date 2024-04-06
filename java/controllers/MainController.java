@@ -23,7 +23,6 @@ public class MainController extends Main {
             else result.add(event.get(i));
             i++;
         }
-
         model.addAttribute("events", result);
         model.addAttribute("role", getRole());
         return "home";
