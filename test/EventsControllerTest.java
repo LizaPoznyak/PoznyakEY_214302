@@ -118,8 +118,8 @@ public class EventsControllerTest {
 
     @Test
     public void testRegisterUserForEvent() throws Exception {
-        Long eventId = 1L; // замените на существующий ID события
-        Long userId = 1L; // замените на существующий ID пользователя
+        Long eventId = 1L; 
+        Long userId = 1L; 
         mockMvc.perform(post("/events/" + eventId + "/register")
                         .param("userId", String.valueOf(userId)))
                 .andExpect(status().is3xxRedirection())
@@ -128,7 +128,7 @@ public class EventsControllerTest {
 
     @Test
     public void testViewRegisteredUsers() throws Exception {
-        Long eventId = 1L; // замените на существующий ID события
+        Long eventId = 1L; 
         MvcResult result = mockMvc.perform(get("/events/" + eventId + "/users"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("event-users"))
