@@ -94,22 +94,22 @@ public class EventsController extends Main {
         return "redirect:/events/all";
     }
 
-//    @PostMapping("/events/{id}/register")
-//    public String registerUserForEvent(@PathVariable(value = "id") Long id, @RequestParam Long userId, Model model) {
-//        Event event = eventsRepository.findById(id).orElseThrow();
-//        User user = usersRepository.findById(userId).orElseThrow();
-//        UserEvent userEvent = new UserEvent(user, event);
-//        userEventRepository.save(userEvent);
-//        return "redirect:/events/all";
-//    }
-//
-//    @GetMapping("/events/{id}/users")
-//    public String viewRegisteredUsers(@PathVariable(value = "id") Long id, Model model) {
-//        Event event = eventsRepository.findById(id).orElseThrow();
-//        List<UserEvent> userEvents = userEventRepository.findByEvent(event);
-//        List<User> users = userEvents.stream().map(UserEvent::getUser).collect(Collectors.toList());
-//        model.addAttribute("users", users);
-//        return "event-users";
-//    }
+    @PostMapping("/events/{id}/register")
+    public String registerUserForEvent(@PathVariable(value = "id") Long id, @RequestParam Long userId, Model model) {
+        Event event = eventsRepository.findById(id).orElseThrow();
+        User user = usersRepository.findById(userId).orElseThrow();
+        UserEvent userEvent = new UserEvent(user, event);
+        userEventRepository.save(userEvent);
+        return "redirect:/events/all";
+    }
+
+    @GetMapping("/events/{id}/users")
+    public String viewRegisteredUsers(@PathVariable(value = "id") Long id, Model model) {
+        Event event = eventsRepository.findById(id).orElseThrow();
+        List<UserEvent> userEvents = userEventRepository.findByEvent(event);
+        List<User> users = userEvents.stream().map(UserEvent::getUser).collect(Collectors.toList());
+        model.addAttribute("users", users);
+        return "event-users";
+    }
 
 }
